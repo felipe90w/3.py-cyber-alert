@@ -1,0 +1,28 @@
+print("entrada dos dados")
+hostname = input("hostname: ")
+porta = int(input("porta: "))
+cvss = float(input("cvss: "))
+firewall = input("firewall ativo (s/n): ").lower()
+
+firewall_ativo = (firewall == 's')
+
+if cvss >= 9.0:
+    classificacao = "risco critico"
+    acao = "Investigar"
+elif cvss >= 7.0:
+    classificacao = "risco alto"
+    acao = "bloquear porta e verificar tráfego"
+elif cvss >= 4.0 or not firewall_ativo:
+    classificacao = "risco medio"
+    acao = "ativar firewall e monitorar ativo"
+else:
+    classificacao = "risco baixa"
+    acao = "nenhuma ação imediata necessária"
+
+
+print("cyber alert engine")
+print(f"Hostname: {hostname}")
+print(f"porta: {porta}")
+print(f"CVSS: {cvss}")
+print(f"classificação: {classificacao}")
+print(f"ação: {acao}")
